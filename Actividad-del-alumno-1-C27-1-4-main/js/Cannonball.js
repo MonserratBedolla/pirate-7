@@ -1,6 +1,5 @@
 class Cannonball {
     constructor(x, y) {
-      
       var options = {
         restitution: 0.8,
         friction: 1.0,
@@ -17,7 +16,10 @@ class Cannonball {
       //añadir Cannonball al index
       //World.add(world,ball);
 
-      this.trajectory=[]
+      //AÑADIR LA DECLARACIÓN DEL ARREGLO
+      this.trajectory=[];
+
+
       World.add(world, this.body);
     }
     
@@ -34,28 +36,28 @@ class Cannonball {
     
     
     
-    
     display() {
-        var angle = this.body.angle;
-        var pos = this.body.position;
-        push();
-        translate(pos.x, pos.y);
-        rotate(angle);
-        imageMode(CENTER);
-        image(this.image,0,0,this.r,this.r);
-        pop();
+      var angle = this.body.angle;
+      var pos = this.body.position;
+      push();
+      translate(pos.x, pos.y);
+      rotate(angle);
+      imageMode(CENTER);
+      image(this.image,0,0,this.r,this.r);
+      pop();
 
-        if (this.body.velocity.x>0 && this.body.position.x>300){
-          var position=[this.body.x,this.body.y]
-          this.trajectory.push(position)
-          console.log("hola")
-        }
+     if (this.body.velocity.x>0 && this.body.position.x>300){
+      ///////////////////////  //recuerda que tenemos que poner la palabra position antes del .x o .y
+        var position=[this.body.position.x,this.body.position.y]
+        this.trajectory.push(position)
+        console.log("hola")
+      }
 
+ 
 
-
-        for (var i=0 ; i<this.trajectory.length  ; i++){
-          image(this.image, this.trajectory[i][0], this.trajectory[i][1],5,5);
-          console.log("hola")
-        }
+      for(var i=0 ; i<this.trajectory.length ; i++){
+        image(this.image, this.trajectory[i][0], this.trajectory[i][1],5,5);
+        console.log("hola")
+      }
 }
 }
